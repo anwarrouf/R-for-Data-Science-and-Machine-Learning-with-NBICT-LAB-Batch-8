@@ -21,7 +21,7 @@ print(a+9)
 
 class(c)
 
-# Logical data types - TRUE,FALSE (T, F)a
+# Logical data types - TRUE,FALSE (T, F)
 
 class(a>b)
 print(a<b)
