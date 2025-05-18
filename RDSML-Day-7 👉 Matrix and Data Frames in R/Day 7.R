@@ -51,3 +51,6 @@ summary(stu_data)
 stu_data = data.frame(student_names,study_hours,marks,male)
 stu_data
 mean(stu_data$study_hours)
+# Finding the item at a specific position
+stu_data$marks[3]
+stu_data$study_hours
