@@ -18,6 +18,7 @@ summary(distance)
 describe(distance)
 
 demo = cbind(arr_delay, dep_delay, distance)
+demo
 describe(demo)
 
 # Introducing the colnames() function
