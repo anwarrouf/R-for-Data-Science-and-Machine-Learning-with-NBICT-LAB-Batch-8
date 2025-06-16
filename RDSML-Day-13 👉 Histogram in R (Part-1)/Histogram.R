@@ -12,9 +12,14 @@ ggplot(dataset,aes(x = weight)) +
 ggplot(dataset,aes(x = weight)) +
   geom_histogram(binwidth = 1,color="black", fill = "lightblue")
 
-# adding the mean line in histogram
+# adding the mean line in histogram; vline means vertical line
 # We can keep the whole code another name
 myPlot = ggplot(dataset,aes(x = weight)) +
   geom_histogram(color="black", fill = "lightblue")
 
-myPlot + geom_vline(aes(xintercept=mean(weight)),color='red')
+myPlot + geom_vline(aes(xintercept=mean(weight)),color='red',linetype = "dashed", size = 1)
+
+# histogram with density plot; density plot is the smooth version of histogram
+ggplot(dataset,aes(x = weight)) +
+  geom_histogram(aes(y=after_stat(density)),color="black", fill = "white") +
+  geom_density(fill='blue',alpha=0.2)
