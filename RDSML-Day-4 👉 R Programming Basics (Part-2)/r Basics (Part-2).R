@@ -14,7 +14,8 @@ name = 'NBICT'
 print(name)
 class(name)
 
-# If a numeric value is put between inverted comma, then that numeric vallue is considered as character/string. Below is the example
+# If a numeric value is put between inverted comma, then that numeric vallue is treated as character/string. Below is the example.
+# 52 is a numeric value, but as it is put inside inverted comma, that's why, it is not a character
 
 c = "52"
 
