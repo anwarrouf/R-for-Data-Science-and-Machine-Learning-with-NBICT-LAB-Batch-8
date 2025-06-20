@@ -23,4 +23,24 @@ ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
 # filling the color of confidence bands
 ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
   geom_point()+
-  geom_smooth(method=lm,fullrange=TRUE)
+  geom_smooth(method=lm,aes(fill=cyl))
+
+# Changing the point shapes manually
+ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
+  geom_point(size=3)+
+  geom_smooth(method=lm,se=F,fullrange=T)+
+  scale_shape_manual(values=c(5,3,17))
+
+# Changing the position of the legend
+ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
+  geom_point(size=3)+
+  geom_smooth(method=lm,se=F,fullrange=T)+
+  scale_shape_manual(values=c(5,3,17))+
+  theme(legend.position = "top")
+
+# Changing the point colors manually
+ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
+  geom_point(size=3)+
+  geom_smooth(method=lm,se=F,fullrange=T)+
+  scale_shape_manual(values=c(5,3,17))+
+  theme(legend.position = "top")
