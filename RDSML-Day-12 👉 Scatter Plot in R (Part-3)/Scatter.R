@@ -43,4 +43,34 @@ ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
   geom_point(size=3)+
   geom_smooth(method=lm,se=F,fullrange=T)+
   scale_shape_manual(values=c(5,3,17))+
+  scale_color_manual(values=c("darkblue","grey","orange"))+
   theme(legend.position = "top")
+
+# Customizing scatter plot
+ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
+  geom_point(size=3)+
+  geom_smooth(method=lm,se=F,fullrange=T)+
+  scale_shape_manual(values=c(5,3,17))+
+  scale_color_manual(values=c("darkblue","grey","orange"))+
+  labs(title="Miles per gallon according to the weight")+
+  theme(legend.position = "top")
+
+# if the title is too long, then we can split it into two sentences (using \n i.e. new line)
+ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
+  geom_point(size=3)+
+  geom_smooth(method=lm,se=F,fullrange=T)+
+  scale_shape_manual(values=c(5,3,17))+
+  scale_color_manual(values=c("darkblue","grey","orange"))+
+  labs(title="Miles per gallon \naccording to the weight")+
+  theme(legend.position = "top")
+
+# Adding x and y axes label
+ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
+  geom_point(size=3)+
+  geom_smooth(method=lm,se=F,fullrange=T)+
+  scale_shape_manual(values=c(5,3,17))+
+  scale_color_manual(values=c("darkblue","grey","orange"))+
+  labs(title="Miles per gallon \naccording to the weight",x="Weight",y="Miles/Gallon")+
+  theme(legend.position = "top")
+
+# Customizing themes
