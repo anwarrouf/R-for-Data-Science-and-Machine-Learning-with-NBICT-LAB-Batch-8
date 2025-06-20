@@ -13,7 +13,7 @@ ggplot(dataset,aes(x = weight)) +
   geom_histogram(binwidth = 1,color="black", fill = "lightblue")
 
 # adding the mean line in histogram; vline means vertical line
-# We can keep the whole code another name
+# We can give the whole code another name
 myPlot = ggplot(dataset,aes(x = weight)) +
   geom_histogram(color="black", fill = "lightblue")
 
