@@ -74,3 +74,16 @@ ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
   theme(legend.position = "top")
 
 # Customizing themes
+plot = ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
+  geom_point(size=3)+
+  geom_smooth(method=lm,se=F,fullrange=T)+
+  scale_shape_manual(values=c(5,3,17))+
+  scale_color_manual(values=c("darkblue","grey","orange"))+
+  labs(title="Miles per gallon \naccording to the weight",x="Weight",y="Miles/Gallon")+
+  theme(legend.position = "top")
+# theme_classic() does not have any background, i.e. clear background we normally use in publication
+plot + theme_classic()
+plot + theme_minimal()
+
+# In above two theme figures, we see that the legend position is on right, although we set legend position on top
+# This is because, in these two themes, default legend positions are on right
