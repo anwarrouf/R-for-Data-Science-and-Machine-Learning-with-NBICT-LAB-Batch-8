@@ -11,10 +11,11 @@ BOD
 install.packages("nycflights13")
 # To use different functions of a package, we need to use the library()
 library(nycflights13)
-# On the other hand, if we need to use given data of a package, then we use attach()
+# On the other hand, if we need to use given data of a package, then we use attach().
+# In nycflights13, there are lots of data, we want to take only flights. :: is used to choose specific data
 attach(nycflights13::flights)
 
-# Lest look at the first six records using the head() function. Head() shows first 6 rows. If we want to see more rows, then put the number)
+# Let look at the first six records using the head() function. Head() shows first 6 rows. If we want to see more rows, then put the number)
 head(nycflights13::flights)
 
 # If we want to see whole dataset, then we have to do
@@ -28,10 +29,11 @@ summary(distance)
 describe(distance)
 
 # If we want to descriptive analysis of multiple columns, then we need to bundle the desired columns first
+
 # cbind is a function that create bundle of multiple columns
 
-demo  = cbind(arr_delay,dep_delay, distance)
-demo
+binding_columns  = cbind(arr_delay,dep_delay, distance)
+binding_columns
 
 # Now we can use describe function
-describe(demo)
+describe(binding_columns)
