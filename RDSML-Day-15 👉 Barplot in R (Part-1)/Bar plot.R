@@ -16,3 +16,14 @@ ggplot(dataset, aes(x=dose,y=length))+
   coord_flip()
 
 # To change the width of bars
+ggplot(dataset, aes(x=dose,y=length))+
+  geom_bar(stat = "identity",width = 0.75)
+
+# To change the border and fill colors of bars
+ggplot(dataset,aes(x = dose, y = length))+
+  geom_bar(stat = "identity", width = 0.5, color = "blue", fill = "lightpink")
+
+# minimal theme with blue fill color
+ggplot(dataset,aes(x = dose, y = length))+
+  geom_bar(stat = "identity", fill = "steelblue")+
+  theme_minimal()
