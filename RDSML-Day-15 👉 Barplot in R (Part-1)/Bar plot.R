@@ -5,7 +5,7 @@ dataset
 
 library(ggplot2)
 
-# Creating a basic barplot
+# Creating a basic barplot. We must use stat = "identity". If not used, then nothing will appear.
 
 ggplot(dataset, aes(x=dose,y=length))+
   geom_bar(stat = "identity")
@@ -25,5 +25,5 @@ ggplot(dataset,aes(x = dose, y = length))+
 
 # minimal theme with blue fill color
 ggplot(dataset,aes(x = dose, y = length))+
-  geom_bar(stat = "identity", fill = "steelblue")+
+  geom_bar(stat = "identity", fill = "steelblue",color="yellow")+
   theme_minimal()
