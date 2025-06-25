@@ -61,7 +61,7 @@ ggplot(dataset,aes(x = dose,y = length, fill = dose))+
   scale_fill_manual(values = c("blue","pink","white"))
 
 
-# changing legend position. If legend.position = "none", nothing will appear
+# changing legend position. If legend.position = "none", legend will be removed
 ggplot(dataset,aes(x = dose,y = length, fill = dose))+
   geom_bar(stat = "identity", color = "black")+
   scale_fill_manual(values = c("blue","pink","white"))+
