@@ -65,6 +65,8 @@ ggplot(dataset,aes(x = dose,y = length, fill = dose))+
 ggplot(dataset,aes(x = dose,y = length, fill = dose))+
   geom_bar(stat = "identity", color = "black")+
   scale_fill_manual(values = c("blue","pink","white"))+
+  scale_color_brewer(palette= "black")+
+  theme_classic()+
   theme(legend.position = "top")
 
 # We should learn more about github from internet. Please search youtube videos for github free courses
