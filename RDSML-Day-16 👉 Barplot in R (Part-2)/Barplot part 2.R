@@ -67,7 +67,7 @@ ggplot(dataset,aes(x = dose,y = length, fill = dose))+
   scale_fill_manual(values = c("blue","pink","white"))+
   scale_color_brewer(palette= "black")+
   theme_classic()+
-  theme(legend.position = "top")
+  theme(legend.position = "bottom")
 
 # We should learn more about github from internet. Please search youtube videos for github free courses
 
