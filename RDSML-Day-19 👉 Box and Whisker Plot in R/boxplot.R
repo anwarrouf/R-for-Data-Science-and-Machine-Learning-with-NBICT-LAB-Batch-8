@@ -51,3 +51,9 @@ ggplot(my_data, aes(x = dose, y = len, color = dose)) +
   scale_x_discrete(limit = c("2","1","0.5"))
 
 # Boxplot with multiple groups
+ggplot(my_data, aes(x = dose, y = len, fill = supp)) +
+  geom_boxplot()
+
+# Changing distance between boxes
+ggplot(my_data, aes(x = dose, y = len, fill = supp)) +
+  geom_boxplot(position = position_dodge(1))
