@@ -49,3 +49,5 @@ ggplot(my_data, aes(x = dose, y = len, color = dose)) +
 ggplot(my_data, aes(x = dose, y = len, color = dose)) +
   geom_boxplot() +
   scale_x_discrete(limit = c("2","1","0.5"))
+
+# Boxplot with multiple groups
