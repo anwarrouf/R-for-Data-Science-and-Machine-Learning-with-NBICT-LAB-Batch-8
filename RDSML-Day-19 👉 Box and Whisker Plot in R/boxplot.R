@@ -56,4 +56,5 @@ ggplot(my_data, aes(x = dose, y = len, fill = supp)) +
 
 # Changing distance between boxes
 ggplot(my_data, aes(x = dose, y = len, fill = supp)) +
-  geom_boxplot(position = position_dodge(1))
+  geom_boxplot(position = position_dodge(1)) +
+  theme_classic()
