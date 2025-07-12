@@ -45,4 +45,5 @@ p = ggplot(df,aes(x = wt, y = mpg, color = cyl)) +
         )
 
 # Saving the plot for publication
-ggsave("publication_ggplot.jpeg", p, width = 6, height = 4, dpi = 600) # image format (.png, .jpeg, .tiff), the plot, width, height, dot per inch
+ggsave("publication_ggplot.jpeg", p, width = 6, height = 4, dpi = 600) 
+# image format (.png, .jpeg, .tiff), the plot name,  desired width, desired height, desired dot per inch
