@@ -38,6 +38,8 @@ ggplot(df,aes(x = wt, y = mpg, color = cyl)) +
   ) + 
   theme_classic(base_size = 12, base_family = "serif") +
   theme(plot.title = element_text(face = "bold", size = 16, hjust = 0.5),
-        axis.title = element_text(face = "bold", size = 11)
-        ) 
-  
+        axis.title = element_text(face = "bold", size = 11), # bold, italic, bold.italic
+        legend.position = "right", # right, left, top, bottom
+        legend.title = element_text(face = "bold.italic"), # bold, italic, bold.italic
+        legend.text = element_text(size = 12)
+        )
