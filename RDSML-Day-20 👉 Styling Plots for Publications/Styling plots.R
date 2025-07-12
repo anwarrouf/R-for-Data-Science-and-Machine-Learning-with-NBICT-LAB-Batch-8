@@ -28,7 +28,7 @@ ggplot(df,aes(x = wt, y = mpg, color = cyl)) +
   theme_classic()
 
 # Controlling the size of font, use different fonts, alignment of title, 
-ggplot(df,aes(x = wt, y = mpg, color = cyl)) +
+p = ggplot(df,aes(x = wt, y = mpg, color = cyl)) +
   geom_point(size = 3) +
   scale_color_viridis_d(name = "Cylinders") +
   labs(
@@ -43,3 +43,6 @@ ggplot(df,aes(x = wt, y = mpg, color = cyl)) +
         legend.title = element_text(face = "bold.italic"), # bold, italic, bold.italic
         legend.text = element_text(size = 12)
         )
+
+# Saving the plot for publication
+ggsave("publication_ggplot.png", p, width = 6, height = 4, dpi = 600)
