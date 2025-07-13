@@ -32,7 +32,7 @@ myPlot + geom_vline(aes(xintercept=mean(weight)),color='red',linetype = "dashed"
 ggplot(dataset,aes(x = weight)) +
   geom_histogram(aes(y=after_stat(density)),color="black", fill = "white") +
   geom_density(fill='blue',alpha=0.2)
-# alpha indicates transparency of the fill area. The less alpha is from 1, the more transparent the filled area will be
+# alpha indicates transparency of the fill area. The lower alpha is from 1, the more transparent the filled area will be
 
 myPlot = ggplot(dataset,aes(x = weight)) +
   geom_histogram(color="black", fill = "lightblue")+
