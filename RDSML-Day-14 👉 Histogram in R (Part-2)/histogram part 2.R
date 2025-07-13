@@ -35,3 +35,11 @@ library(plyr)
 group_means = ddply(dataset,"sex",summarise, grp.mean = mean(weight))
 group_means
 
+# Now adding mean lines
+
+myPlot = ggplot(dataset, aes(x = weight, fill = sex)) + 
+  geom_histogram(color = 'white', alpha = 0.5, position = "dodge") +
+  geom_vline(data = group_means, aes(xintercept = grp.mean)) +
+  theme(legend.position = "top")
+
+myPlot
