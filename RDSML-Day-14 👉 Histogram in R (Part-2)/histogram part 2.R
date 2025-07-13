@@ -38,8 +38,14 @@ group_means
 # Now adding mean lines
 
 myPlot = ggplot(dataset, aes(x = weight, fill = sex)) + 
-  geom_histogram(color = 'white', alpha = 0.5, position = "dodge") +
-  geom_vline(data = group_means, aes(xintercept = grp.mean)) +
+  geom_histogram(color = 'white', position = "dodge") +
+  geom_vline(data = group_means, aes(xintercept = grp.mean, color = sex), line = "dashed") +
   theme(legend.position = "top")
 
 myPlot
+
+# Saving the plot for publication
+ggsave("histogram.tiff", myPlot, width = 6, height = 4, dpi = 600)
+
+# Changing the color of our choice for each group - by using custom color palettes
+
