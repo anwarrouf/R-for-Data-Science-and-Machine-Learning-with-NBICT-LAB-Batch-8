@@ -38,8 +38,10 @@ group_means
 # Now adding mean lines
 
 myPlot = ggplot(dataset, aes(x = weight, fill = sex)) + 
-  geom_histogram(color = 'white', position = "dodge") +
-  geom_vline(data = group_means, aes(xintercept = grp.mean, color = sex), line = "dashed") +
+  geom_histogram(color = 'white', alpha = 1, position = "dodge") +
+  geom_vline(data = group_means,
+             aes(xintercept = grp.mean, color = sex),
+             linetype = "dashed") +
   theme(legend.position = "top")
 
 myPlot
@@ -48,4 +50,20 @@ myPlot
 ggsave("histogram.tiff", myPlot, width = 6, height = 4, dpi = 600)
 
 # Changing the color of our choice for each group - by using custom color palettes
+# Can also use hexadecimal number of a color. In hexadecimal system, first two character of Red, then two for green and
+# last two for blue. 'F' stands for full, so, #FFFFFF is the combination of red, green and blue i.e. white.
+# if #000000 (all zero) indicates black
+myPlot + 
+  scale_color_manual(values = c("#123456","#FFFFFF")) + # color indicates the pill border color
+  scale_fill_manual(values = c("#999999","#E69F00")) # fill indicates inside color
+# in the above, though we give red color as border in male, but it is showing, so I have to check it again
+
+# Using brewer palettes
+myPlot + scale_color_brewer(palette = "Dark2") + # We can find palette names from google
+  scale_fill_brewer(palette = "Dark2") # color and fill brewer can be different
+
+# Using grey scale
+myPlot +
+  scale_color_grey() +
+  scale_fill_grey()
 
