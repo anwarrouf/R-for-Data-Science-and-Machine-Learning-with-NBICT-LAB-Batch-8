@@ -43,6 +43,7 @@ e
 e = as.logical(e)
 e
 # Creating sequential vector
+
 # Creating a vector starting from 1 to 10
 my_seq = c(1:50,80,99,88,71,61,92,97)
 my_seq
