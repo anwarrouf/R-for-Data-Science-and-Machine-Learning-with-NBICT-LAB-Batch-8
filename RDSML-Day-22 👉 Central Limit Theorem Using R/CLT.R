@@ -30,31 +30,32 @@
 # Demonstration of CLT
 # Generate 10,000 times number of uniform distribution (heights of all pillars almost same)
 
+# Example of a rolling dice. Probability of getting 1, 2, 3, 4, 5 and 6 can be -
+# This is an example of uniform distribution
+
 die_faces <- c(0.16,0.17,0.15,0.18,0.19,0.15)
-barplot(die_faces,
+plot <- barplot(die_faces,
         xlab = "die faces",
         ylab = "probability",
         ylim = c(0,0.2),
         breaks = seq(0,0.2,by = 0.05), # for intervals in y axis
-        abline(h = 20, col = "red", lwd = 2), # adding a horizontal line i.e. intercept in y axis
-        axes = T,
-        main = "probability vs die faces" # main title
         )
 
-
-r <- runif(10000) # Generate 10,000 random numbers from a uniform distribution between 0 and 1
+r <- runif(10000) # 'runif' stands for random uniform'. Generate 10,000 random numbers from a uniform distribution between 0 and 1
 r
 hist(r)
-mean_r <- mean(r)
+mean_r<- mean(r)
 mean_r
 sd_r <- sd(r)
 sd_r
 
 # Sampling of values from the above r data set
 
-# Draw four random samples from the distribution
+# Proving central limit theorem by R. Explanation below:
 
-samples1 <- sample(r,4) # (dataset, how many values to choose)
+# Draw three random samples from the distribution
+
+samples1 <- sample(r,4) # sample is a function(dataset, how many values to choose)
 samples1
 samples2 <- sample(r,4)
 samples2
@@ -66,7 +67,7 @@ mean(samples1)
 mean(samples2)
 mean(samples3)
 
-# Creating 'for' loop
+# Run a 'for' loop
 
 cl4 <- mean(sample(r,4)) # assume cl4 is to calculate 4 samples from 10000 values
 cl4
