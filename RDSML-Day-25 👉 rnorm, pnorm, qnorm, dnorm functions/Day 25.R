@@ -47,3 +47,17 @@ pnorm(-1.64) # that is, in case of z value -1.64, 5% value is outside
 
 
 # qnorm gives z value if probability value is provided. Probability values are between 0 and 1
+qnorm(0.25)
+
+#dnorm
+# Y axis value for corresponding z values i.e. the values on the curve
+dnorm(0)
+# Lets use dnorm to draw the normal distribution.
+# z-values from -3 and 3 covers 99.7% values. But z can be infinite. Here we try z-values from -4 to 4.
+# This will produce a absolute bell shapes normal distribution curve
+zvalues <- seq(-4.0, 4.0, by = 0.1)
+zvalues
+dvalues <- dnorm(zvalues)
+dvalues
+
+plot(zvalues, dvalues)
