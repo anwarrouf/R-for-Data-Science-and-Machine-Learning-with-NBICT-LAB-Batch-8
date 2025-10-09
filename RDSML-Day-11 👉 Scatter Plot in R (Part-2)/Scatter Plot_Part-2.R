@@ -34,9 +34,10 @@ ggplot(dataset, aes(x = wt, y = mpg)) +
   geom_smooth(method = lm, se = FALSE)
 
 # Loess method, if we do not select any specific method, then loess line will be shown
+# loess means locally estimated scatter smoothing
 ggplot(dataset, aes(x = wt, y = mpg)) +
   geom_point(size = 3, shape = 9) +
-  geom_smooth()
+  geom_smooth(method = loess)
 
 # NOW THE NEW TOPIC
 
@@ -50,11 +51,11 @@ ggplot(dataset, aes(x = wt, y = mpg)) +
 ggplot(dataset, aes(x = wt, y = mpg)) +
   geom_point(size = 3, shape = 9, color = 'blue') +
   geom_smooth(method = lm, linetype  = 'dashed',
-              color = 'darkgreen', fill = "red")
+              color = 'darkgreen', fill = "red") # fill indicates confidence interval color
 
 # scatter plots with multiple groups
 
-# changing the point shapes by the level of cyl in the matcars dataset; here we want to compare wt, mpg and cyl
+# changing the point shapes by the level of cyl in the mtcars dataset; here we want to compare wt, mpg and cyl
 # converting the cyl column from numeric to factor variable
 
 dataset$cyl = as.factor(dataset$cyl)
@@ -63,11 +64,10 @@ ggplot(dataset, aes(x = wt, y = mpg, shape  = cyl)) +
   geom_point()
 
 # changing point shape and color for cyl
-ggplot(dataset, aes(x = wt, y = mpg, shape  = cyl, color = cyl)) +
-  geom_point()
+ggplot(dataset, aes(x = wt, y = mpg, shape  = cyl, color = cyl, size = cyl)) +
+  geom_point() # we can differentiate the factor variable by size, shape and color or only size, shape and color
 
 # changing point size for cyl
-ggplot(dataset, aes(x = wt, y = mpg, size = cyl)) +
-  geom_point()
-
-
+ggplot(dataset, aes(x = wt, y = mpg, color = cyl)) +
+  geom_point(size = 3) +
+  geom_smooth(method = lm)
