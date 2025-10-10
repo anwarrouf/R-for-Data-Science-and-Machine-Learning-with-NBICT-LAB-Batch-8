@@ -16,7 +16,8 @@ ggplot(dataset, aes(x = weight, fill = sex)) + # fill দিয়ে group গু�
   geom_histogram(color = 'white', alpha = 1, position = "identity") # alpha changes transparency, if less than 1, then becomes more tranparent
 
 # We can change the position adjustment to use for overlapping points on the layer
-# Possible values for the argument position are "identity", "stack", "dodge". Default position is "stack"
+# Possible values for the argument position are -
+# "identity", "stack", "dodge". Default position is "stack"
 
 # Interleaved histogram
 ggplot(dataset, aes(x = weight, fill = sex)) + # fill দিয়ে group গুলো separate করছে
@@ -24,7 +25,7 @@ ggplot(dataset, aes(x = weight, fill = sex)) + # fill দিয়ে group গু�
 
 # Changing the position of legend
 ggplot(dataset, aes(x = weight, fill = sex)) + 
-  geom_histogram(color = 'white', alpha = 1, position = "dodge") +
+  geom_histogram(color = 'white', alpha = 1, position = "stack") +
   theme(legend.position = "top") # legend position can be top, bottom, right, left
 
 # Adding mean line in male and female group separately
@@ -33,7 +34,29 @@ ggplot(dataset, aes(x = weight, fill = sex)) +
 install.packages("plyr")
 library(plyr)
 group_means = ddply(dataset,"sex",summarise, grp.mean = mean(weight))
+
+# The summarise function (also known as summarize) in the plyr package in R 
+# is used to create a new data frame by summarizing an existing data frame
+# It operates similarly to mutate, but instead of adding columns to the original data frame- 
+# it generates a new data frame with summarized values.
+# উপরে code টি বোঝাচ্ছে- (Dataset এর নাম, কোন column এর উপর কাজ করবে, summarise করবে- এটিই মূল fuction, কি করবে
+# Dataset এর নাম দিলাম, sex column এর উপর কাজ করবে, summarise কররে, নতুন dataframe এ summarise করে কি কি দেখাবে,আমরা চাইলে multiple calculation করতে পারি)
+# নীচের example টা দেখি যেখানে summarise করে mean(value) এবং length(value) বের করা হয়েছে
+# data <- data.frame(
+ #  group = c("A", "A", "B", "B", "A", "C"),
+ # value = c(10, 15, 20, 25, 12, 18)
+
+# Summarize the data to find the mean value for each group
+# summary_data <- ddply(data, "group", summarise, mean_value = mean(value), n_observations = length(value))
+
+# print(summary_data)
+
+
+
+
 group_means
+
+
 
 # Now adding mean lines
 

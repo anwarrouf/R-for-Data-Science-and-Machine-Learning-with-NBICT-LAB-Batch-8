@@ -20,10 +20,10 @@ ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
   geom_point()+
   geom_smooth(method=lm,se=FALSE,fullrange=TRUE)
 
-# filling the color of confidence bands
+# filling the color of confidence bands of each cyl group
 ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
   geom_point()+
-  geom_smooth(method=lm,aes(fill=cyl))
+  geom_smooth(method=lm,aes(color=cyl)) # চাইলে আমরা size অনুসারেও করতে পারি
 
 # Changing the point shapes manually
 ggplot(dataset,aes(x=wt,y=mpg,color=cyl,shape=cyl))+
