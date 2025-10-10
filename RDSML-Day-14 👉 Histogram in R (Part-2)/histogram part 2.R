@@ -1,6 +1,7 @@
 # Importing the dataset
 
 dataset = read.csv("data.csv")
+View(dataset)
 
 # Importing the library
 library(ggplot2)
@@ -77,7 +78,7 @@ ggsave("histogram.tiff", myPlot, width = 6, height = 4, dpi = 600)
 # last two for blue. 'F' stands for full, so, #FFFFFF is the combination of red, green and blue i.e. white.
 # if #000000 (all zero) indicates black
 myPlot + 
-  scale_color_manual(values = c("#123456","#FFFFFF")) + # color indicates the pill border color
+  scale_color_manual(values = c("#123456","#FFFFFF")) + # color indicates the bin border color
   scale_fill_manual(values = c("#999999","#E69F00")) # fill indicates inside color
 # in the above, though we give red color as border in male, but it is showing, so I have to check it again
 
@@ -89,4 +90,5 @@ myPlot + scale_color_brewer(palette = "Dark2") + # We can find palette names fro
 myPlot +
   scale_color_grey() +
   scale_fill_grey()
+
 
