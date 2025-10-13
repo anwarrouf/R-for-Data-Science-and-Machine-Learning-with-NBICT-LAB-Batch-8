@@ -39,7 +39,7 @@ ggplot(dataset,aes(x = dose,y = length, color = dose))+
 
 # To change fill colors by groups
 ggplot(dataset,aes(x = dose,y = length, fill = dose))+
-  geom_bar(stat = "identity")
+  geom_bar(stat = "identity") # R automatically gives fill colors; here, red, then green and then blue
 
 # Using minimal theme to remove background
 
@@ -67,7 +67,8 @@ ggplot(dataset,aes(x = dose,y = length, fill = dose))+
   scale_fill_manual(values = c("blue","pink","white"))+
   scale_color_brewer(palette= "black")+
   theme_classic()+
-  theme(legend.position = "bottom")
+  labs(caption = "Data collected from internet")+
+  theme(legend.position = "bottom", plot.caption = element_text(hjust = 0.5, color = 'red'))
 
 # We should learn more about github from internet. Please search youtube videos for github free courses
 

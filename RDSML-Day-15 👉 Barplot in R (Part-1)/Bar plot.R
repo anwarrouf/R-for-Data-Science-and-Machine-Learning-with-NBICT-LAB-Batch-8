@@ -4,17 +4,19 @@ dataset = data.frame(dose = c("D0.5","D1","D2"),
                      length = c(4.2,10,29.5))
 dataset
 
+write.csv(dataset, "my_data") # exporting a data frame to the directory
+
 library(ggplot2)
 
 # Creating a basic barplot. We must use stat = "identity". If not used, then nothing will appear.
 
-ggplot(dataset, aes(x=dose,y=length))+
-  geom_bar(stat = "identity")
+ggplot(data = dataset, mapping = aes(x=dose,y=length))+ # data and mapping - we dont need to write, if write, no problem
+  geom_bar(stat = "identity") # identity indicates exact values in the vector
 
 # The above one is a vertical barplot. To create horizontal barplot, i.e. we will just flip the coordinate
 ggplot(dataset, aes(x=dose,y=length))+
   geom_bar(stat = "identity")+
-  coord_flip()
+  coord_flip() # flip the coordinates
 
 # To change the width of bars
 ggplot(dataset, aes(x=dose,y=length))+
@@ -33,17 +35,27 @@ ggplot(dataset,aes(x = dose, y = length))+
 # Bar plot with label that is we want show the values on top or inside of the bar
 ggplot(dataset,aes(x = dose, y = length))+
   geom_bar(stat = "identity", fill = "steelblue",color="yellow")+
-  geom_text(aes(label=length), vjust = -0.5, size = 3, color = "red")+ # values are shown, vjust i.e. vertical justification is needed
+  geom_text(aes(label=length), vjust = -0.5, size = 3, color = "red", family = "times new roman")+ # values are shown, vjust i.e. vertical justification is needed
   theme_minimal()
 # If we give positive number to vjust, then the values are shown inside the bar
+# family indicates font
 
 myCarData = mtcars
 # Bar plot of counts
 # We want to build a bar plot on the basis of number of cylinders
-ggplot(myCarData, aes(x=factor(cyl)))+
+ggplot(myCarData, aes(x=factor(cyl)))+ # no y value in aes, as count indicates number of cars in different number of cylinder
   geom_bar(stat = "count")+
-  labs(x="number of cylinder")+
+  labs(title = "Miles per gallon on cylinder number",
+       subtitle = "Number of cylinder",
+       x = "Cylinder number",
+       y = "Count",
+       caption = "Data collected from online")+
+  theme(plot.title = element_text(size = 24, hjust = 0.5),
+        plot.subtitle = element_text(size = 20),
+        axis.title.x = element_text(size = 12),
+        axis.title.y = element_text(size = 12),
+        plot.caption = element_text(size = 32, color = "blue"),
+        legend.position = "top")+
   theme_minimal()
-
 # stat is identity used as the plot is using the exact plot of that plot. On the other hand, stat = count then the plot is built on count
 
