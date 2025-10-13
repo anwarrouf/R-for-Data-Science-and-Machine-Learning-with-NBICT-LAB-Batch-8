@@ -56,3 +56,30 @@ regressor <- lm(formula = Salary ~ YearsExperience,
 # In formula, কে dependent আর কে independent variable, তা বলে দিতে হবে
 
 regressor # আমাদের model তৈরি করা হয়ে গেছে। আজ ক্লাস এ পর্যন্তই।
+
+# Checking the summary of regressor
+summary(regressor)
+
+# predicting the test set results
+
+y_pred_test <- predict(regressor, newdata = test_set_final)
+y_pred_training <- predict(regressor, newdata = training_set_final)
+y_pred_test
+y_pred_training
+
+library(ggplot2)
+
+# Visualizing the training set results
+
+ggplot()+
+  geom_point(aes(x = training_set_final$YearsExperience, y = training_set_final$Salary), color = "red")+
+  geom_line(aes(x = training_set_final$YearsExperience, y = y_pred_training), color = "blue")+
+  labs(title = "Salary vs experience_training set", x = "Years of Experience", y = "Salary")
+  
+# Visualizing the test set results
+  
+ggplot()+
+    geom_point(aes(x = test_set_final$YearsExperience, y = test_set_final$Salary), color = "red")+
+    geom_line(aes(x = test_set_final$YearsExperience, y = y_pred_test), color = "blue") +
+    labs(title = "Salary vs experience_Test set", x = "Years of Experience", y = "Salary")
+
