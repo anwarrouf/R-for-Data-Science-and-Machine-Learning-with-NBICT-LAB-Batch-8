@@ -2,6 +2,13 @@
 # importing dataset
 
 dataset <- read.csv("Salary_Data.csv")
+# এই dataset দুটি variable আছে- salary and yearsExperience. কোন কর্মীর salary অনেক factor এর উপার নির্ভর করে
+# factor গুলোর মধ্যে salary একটা factor. ফলে, salary হচ্ছে dependent variable আর yearsExperience হচ্ছে independent variable
+# একটি independent variable এর উপর ভিত্তি করে কোন dependent variable কে predict করাই হচ্ছে simple linear regression এর মূল কথা
+# এজন্য একটা বড় dataset নিতে হবে। সেই dataset দিয়ে machine কে trained করা হবে
+# এজন্য প্রথমে dataset কে দুটো subset এ ভাগ করতে হবে- training subset & test subset
+# traning subset দিয়ে machine কে train করা হবে । এর পর তা test subset এ apply করে দেখতে হবে কতটা নির্ভূল value সে predict করতে পারে
+# তারপর মূল value এর সাথে মিলিয়ে accuracy score বের করা যায়
 
 # Splitting the dataset into the Training set and Test set
 
