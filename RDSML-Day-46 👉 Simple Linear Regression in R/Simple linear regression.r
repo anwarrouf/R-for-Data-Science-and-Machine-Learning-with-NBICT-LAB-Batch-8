@@ -25,7 +25,7 @@ training_set_1
 # TRUE means the value selected for training set
 # FALSE means the values not selected for training set. These not selected values will be used as test set
 training_set_2 <- sample.split(Y= dataset$Salary, SplitRatio = 2/3)
-training_set_2 # Running the code again will give a new combination
+training_set_2 # Each time running the code  will produce a new combination
 # This phenomenon will create a problem
 
 
@@ -63,8 +63,11 @@ summary(regressor)
 # predicting the test set results
 
 y_pred_test <- predict(regressor, newdata = test_set_final)
+
 y_pred_training <- predict(regressor, newdata = training_set_final)
+
 y_pred_test
+
 y_pred_training
 
 library(ggplot2)
@@ -73,6 +76,7 @@ library(ggplot2)
 
 ggplot()+
   geom_point(aes(x = training_set_final$YearsExperience, y = training_set_final$Salary), color = "red")+
+  geom_line(aes(x = training_set_final$YearsExperience, y = y_pred_training), color = "blue")
   geom_line(aes(x = training_set_final$YearsExperience, y = y_pred_training), color = "blue")+
   labs(title = "Salary vs experience_training set", x = "Years of Experience", y = "Salary")
   
@@ -80,6 +84,6 @@ ggplot()+
   
 ggplot()+
     geom_point(aes(x = test_set_final$YearsExperience, y = test_set_final$Salary), color = "red")+
-    geom_line(aes(x = test_set_final$YearsExperience, y = y_pred_test), color = "blue") +
+    geom_line(aes(x = test_set_final$YearsExperience, y = y_pred_test), color = "green") +
     labs(title = "Salary vs experience_Test set", x = "Years of Experience", y = "Salary")
 
