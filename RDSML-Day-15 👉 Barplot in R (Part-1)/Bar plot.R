@@ -43,7 +43,7 @@ ggplot(dataset,aes(x = dose, y = length))+
 myCarData = mtcars
 # Bar plot of counts
 # We want to build a bar plot on the basis of number of cylinders
-ggplot(myCarData, aes(x=factor(cyl)))+ # no y value in aes, as count indicates number of cars in different number of cylinder
+ggplot(myCarData, aes(x=factor(cyl)))+ # no y value in aes, as count indicates number of cars in different numbers of cylinder
   geom_bar(stat = "count")+
   labs(title = "Miles per gallon on cylinder number",
        subtitle = "Number of cylinder",
