@@ -15,3 +15,17 @@ dataset
 
 # Splitting dataset into training set and test set
 
+library(caTools)
+
+set.seed(123)
+split <- sample.split(dataset$Profit, SplitRatio = 4/5) # for training set
+training_set <- subset(dataset, split == TRUE)
+test_set <- subset(dataset, split == FALSE)
+
+# fitting the multiple linear regression model to the training set
+
+regressor <- lm(formula = Profit ~ R.D.Spend + Administration + Marketing.Spend + State,
+                data = training_set) # যে কয়টি independent variable দিতে চাই, সেগুলো + দিয়ে লিখতে হবে,
+# যে কয়টি independent variable সে কয়টি লিখতে হবে।
+# সবগুলো লেখার ক্ষেত্রে শুধুমাত্র . লিখলেই হবে
+summary(regressor)
