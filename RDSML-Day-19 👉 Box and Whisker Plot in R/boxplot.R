@@ -6,8 +6,9 @@ my_data$dose = as.factor(my_data$dose)
 
 library(ggplot2)
 
-ggplot(my_data, aes(x = dose, y = len)) +
-  geom_boxplot()
+ggplot(my_data, aes(x = dose, y = len, color = supp)) +
+  geom_boxplot(outliers = F) +
+  geom_point()
 
 # Boxplot ডাটার distribute বুঝতে সাহায্যকরে
 # data এর median এর অবস্থান দেখে data এর distribute বোঝা যায়
@@ -34,7 +35,15 @@ ggplot(my_data, aes(x = dose, y = len)) +
 
 # Ignoring outlier
 ggplot(my_data, aes(x = dose, y = len)) +
-  geom_boxplot( outlier.shape = NA)
+  geom_boxplot(outlier.color = "black") +
+  geom_point(color = "red")
+  
+
+# Completely removing outlier from calculation
+
+ggplot(my_data, aes(x = dose, y = len)) +
+  geom_boxplot(outliers = FALSE) +
+  geom_point(color = "red")
 
 # Choosing which item to display
 ggplot(my_data, aes(x = dose, y = len)) +
@@ -54,7 +63,16 @@ ggplot(my_data, aes(x = dose, y = len, color = dose)) +
 ggplot(my_data, aes(x = dose, y = len, fill = supp)) +
   geom_boxplot()
 
+# multiple groups can also be plotted based on colour
+ggplot(my_data, aes(x = dose, y = len, colour = supp)) +
+  geom_boxplot()
+  geom_point()
+
 # Changing distance between boxes
 ggplot(my_data, aes(x = dose, y = len, fill = supp)) +
   geom_boxplot(position = position_dodge(1)) +
   theme_classic()
+
+
+ggplot(my_data, aes(x = dose, y = len, fill = supp)) +
+  geom_boxplot()

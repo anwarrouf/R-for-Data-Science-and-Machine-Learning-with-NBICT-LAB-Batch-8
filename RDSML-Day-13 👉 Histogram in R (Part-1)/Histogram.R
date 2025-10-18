@@ -33,9 +33,11 @@ myPlot +
 
 ggplot(dataset,aes(x = weight)) + # global mapping of aes in ggplot applies to all subsequent layers
   geom_histogram(aes(y=after_stat(density)),color="black", fill = "white") + # aes in geom function applies to only this layer
-  geom_density(fill='blue',alpha=0.2)
+  geom_density(fill='blue',alpha=0.2) +
+  annotate("text", label = "Histogram for learning", x = 75, y = 0.08, color = "black") # adding a text in a plot
 # alpha indicates transparency of the fill area. alpha = 1 is completely opaque, less than 1 increases transparency
 
 myPlot = ggplot(dataset,aes(x = weight)) +
   geom_histogram(color="black", fill = "lightblue")+
   theme_classic()
+myPlot
