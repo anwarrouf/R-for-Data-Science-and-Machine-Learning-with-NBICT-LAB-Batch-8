@@ -3,7 +3,9 @@
 # The more values we have, the more close the mean and standard deviation will be
 
 # rnorm generates random numbers for normal or Gaussian distribution (with mean = 0 and sd = 1) and here 10 indicates, we ask for 10 values
-x <- rnorm(10) 
+x <- rnorm(10)  # rnorm(n = number of values to generate, mean = 0, sd = 1) 
+# if we do not mention mean and sd, then it will take 0 and 1 respectively
+# otherwise, we have to mention our desired mean and sd
 x
 mean(x)
 sd(x)
@@ -45,9 +47,13 @@ pnorm(-1.96) # in fact,±1.96SD, 95% values will cover. But for conveniences, we
 # Thus, 2.5% values will fall outside of either side; in total 2.5% x 2 = 5%. From here, 95% confidence interval comes
 pnorm(-1.64) # that is, in case of z value -1.64, 5% value is outside
 
+pnorm(2, mean = 4, sd = 2)
 
 # qnorm gives z value if probability value is provided. Probability values are between 0 and 1
 qnorm(0.25)
+
+qnorm(0.25, mean = 5, sd = 2)
+
 
 #dnorm
 # Y axis value for corresponding z values i.e. the values on the curve
