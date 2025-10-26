@@ -23,10 +23,13 @@ library(BSDA)
 # If want to check greater or lower, then two tail test
 mean(dataset$Machine.1)
 
+# Sample size is recommended to be greater than 30
+
+
 z.test(x=dataset$Machine.1, # as only one sample, that's why no y value here
        alternative = "greater", # greater, less, two-sided
-       mu = 150,
-       sigma.x = 2,
+       mu = 150, # population mean
+       sigma.x = 2, # population standard deviation
        conf.level = 0.95) # conf.level = 0.95 by default; we can change it 0.99
 # the result p-value is < 2.2e16
 # Thus, alternate hypothesis is accepted. That is-
