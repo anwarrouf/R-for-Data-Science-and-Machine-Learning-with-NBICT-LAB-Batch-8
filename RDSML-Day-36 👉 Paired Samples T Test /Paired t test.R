@@ -115,7 +115,25 @@ cohen.d(data$carb_protein, data$carb, paired = T)
   # effect size has negligible effect
 
 
+# Writing style in brief
 
+# A paired samples T test was used to determine whether there was a
+# statistically significant mean difference between the distance ran
+# when participants imbibed a carbohydrate-protein drink, compared to 
+# a carbohydrate only drink. No outliers were detected. 
+# The assumption of normality was not violated, as assessed by the
+# Shapiro-wilk's test where p = 0.780. Participants ran further when imbibing the
+# carbohydrate-protein drink (Mean = 11.302 KM, SD = 0.726 KM), a statistically
+# significant mean increase of 0.135 KM, 95% confidence interval (CI) [0.091, 0.181],
+# t(degrees of freedom 19) = 6.352, p < 0.001, Cohen's d estimate: 0.187
+
+# Histogram of mean differences
+hist(data$diff_before_after)
+
+library(ggplot2)
+ggplot(data = data, aes(x = diff_before_after))+
+  geom_histogram(aes(y = after_stat(density)))+
+  geom_density()
 
 
 
