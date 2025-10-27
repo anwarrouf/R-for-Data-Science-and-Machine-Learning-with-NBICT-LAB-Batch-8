@@ -31,3 +31,4 @@ z.test(x = data$Machine.1,
 
 
 # Two sample Z test formula
+
