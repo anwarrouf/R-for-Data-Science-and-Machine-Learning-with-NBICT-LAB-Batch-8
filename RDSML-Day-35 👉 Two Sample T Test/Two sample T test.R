@@ -21,7 +21,7 @@
 # On the other hand, we conduct an experiment with a BP drug.
 # A patient groups' blood pressure are measured before drug treatment
 # After drug treatment, blood pressures are measured again
-# Here, same group is considered; that's why, in this case, dependend t test
+# Here, same group is considered; that's why, in this case, dependent t test
 
 
 # Importing data
