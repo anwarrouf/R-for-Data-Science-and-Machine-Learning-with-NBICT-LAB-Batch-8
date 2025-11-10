@@ -55,6 +55,37 @@ plot(m) # this will create 4 plots. To arrange these 4 plots, we need to run 'pa
 
 # Shapiro Wilk on residuals (normality)
 
-residuals(m)
+res <- residuals(m)
+shapiro.test(res)
+
+# the result is W = 0.99056, p-value = 0.5848; so, data is normal distribution
+
+# Levene's test for equal variances
+library(car)
+car::leveneTest(y ~ fert*irr, data = data, center = median) # considering median as reference
+# the result is Df F value Pr(>F)
+# group   5  0.6156 0.6882 # so, variances are equal
+#         114 
+
+# Interaction contrasts (simple effects) : 
+  # effect of fertilizer at each level of irrigation
+    # At low irr, any different between fert groups
+    # The same as at high irr
+
+library(emmeans)
+contrast(emmeans(m, ~ fert | irr), method = "pairwise", adjust = "tukey")
+
+# This asks for estimated marginal means (EMMs) of fert, separately for each level of irr.
+# In words:
+  # “Give me the mean response for each fertilizer type, within each irrigation level, adjusted for the model.”
+  # Compare all levels of fert pairwise (Con vs N, Con vs N+P, N vs N+P) within each level of irr.
+
+# Comparing mean response for each irrigation group, within each fertilizer
+contrast(emmeans(m, ~ irr | fert), method = "pairwise", adjust = "tukey")
+
+
+
+
+
 
 
