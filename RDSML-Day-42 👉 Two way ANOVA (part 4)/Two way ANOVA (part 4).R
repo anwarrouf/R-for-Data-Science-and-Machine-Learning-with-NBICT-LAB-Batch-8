@@ -1,14 +1,16 @@
-# Importing data
+#  1) Importing data ----
 data <- read.csv("cropdata.csv")
 
-# Descriptve statistics
+# 2) Importing required packages ----
+
+# 3) Calculating Descriptive statistics ----
 
 library(dplyr)
 
 stats <- data %>%
   group_by(fert,irr) %>%
   summarise(mean_yield = mean(y),
-            se_yield = sd(y)/n()) # n() indicates number of values
+            se_yield = sd(y)/sqrt(n())) # n() indicates number of values
 
 # Data visualization
 library(ggplot2)
@@ -28,7 +30,10 @@ ggplot(data, aes(x = irr, y = y)) +
   stat_summary(fun = mean, geom = "line", aes(group = fert), size = 0.75) +
   stat_summary(fun = mean, geom = "point", aes(group = fert), size = 3, alpha = 0.5) +
   stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.4) +
-  facet_wrap(~fert)
+  facet_wrap(~fert) +
+  labs(x  = "Irrigation", y = "Mean yield",
+       title = "Interaction of fertilizer and irrigation on crop yield") +
+  theme_classic()
 
 
 # Fit the model for two way ANOVA
@@ -133,16 +138,36 @@ install.packages("multcomp") # multiple comparison
 library(multcomp)
 
 install.packages("multicompView")
+library(multcompView)
 
 group_letters <- cld(emmeans(m, ~ fert * irr),LETTERS = letters)
 
 
+# Publication-ready ANOVA table
+library(broom)
+
+install.packages("kableExtra")
+library(kableExtra)
+
+install.packages("kableExtra", dependencies = TRUE)
+
+library(dplyr)
+
+aov_tab <- Anova(m, type = 3) %>%
+  tidy() %>%
+  mutate(p.value = signif(p.value, 3))
+
+kbl(aov_tab, digits = 3, caption = "Two-way ANOVA") %>%
+  kable_classic(full_width = FALSE, html_font = "Times New Roman")
 
 
 
 
-
-
+p_raw <- ggplot(data = data, mapping = aes(x = irr, y = y, color = fert)) +
+  geom_jitter() +
+  stat_summary(fun = mean, geom = "point", position = position_dodge(), size = 4)
+p_raw
+  
 
 
 
