@@ -1,0 +1,84 @@
+# What is polynomial regression? ----
+  # Polynomial regression is an extension of simple linear regression used when -
+  # the relationship between the predictor (X) and the outcome (Y) is curved rather than a straight line
+
+dataset <- read.csv("polynom_data.csv")
+dataset <- dataset[,-1]
+
+options(scipen = 5)
+
+# Checking the plot ----
+library(ggplot2)
+ggplot(dataset, mapping = aes(x = x, y = y)) +
+  geom_point() +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+# Fit the quadratic (degree = 2) polynomial regression model ----
+
+polynom_model <- lm(formula = y ~ poly(x, degree = 2, raw = TRUE), data = dataset)
+# degree indicates maximum power of x to calculate
+  # here, y = b0 + b1x + b2X^2
+# raw should be TRUE; by default raw is FALSE
+
+summary(polynom_model)
+
+# Residuals:
+#   Min      1Q  Median      3Q     Max 
+# -5.9494 -2.0512 -0.2106  1.7576  5.0315 
+# 
+# Coefficients:
+#   Estimate Std. Error t value Pr(>|t|)    
+# (Intercept)                        3.0296     2.9302   1.034 0.316559    
+# poly(x, degree = 2, raw = TRUE)1   2.3171     1.2119   1.912 0.073961 .  
+# poly(x, degree = 2, raw = TRUE)2  -0.5332     0.1076  -4.957 0.000143 ***
+#   ---
+#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+# Thus the quadratic equation for this data is -
+  # y = 3.0296 + 2.3171x - 0.5332x^2
+# Here
+
+# Checking in another way-
+polynom_model$residuals
+median(polynom_model$residuals)
+Q_1 <- quantile(polynom_model$residuals, 0.25)
+Q_3 <- quantile(polynom_model$residuals, 0.75)
+min(polynom_model$residuals)
+max(polynom_model$residuals)
+# Above all are found correct
+
+# Creating a dummy dataset for x ----
+
+x_new <- data.frame(x = seq(from = min(dataset$x), to = max(dataset$x), length.out = 100))
+y_pred <- predict(polynom_model, newdata = x_new)
+
+pred_data <- data.frame(x_new, y_pred)
+
+ggplot() +
+  geom_point(data = dataset, mapping = aes(x= x, y = y)) +
+  geom_point(data = pred_data, mapping = aes(x = x, y = y_pred)) +
+  geom_line(data = pred_data, mapping = aes(x = x, y = y_pred), col = "green")
+
+
+# Fit a cubic polynomial regression model ----
+
+polynom_cubic <- lm(formula = y ~ poly(x, degree = 3, raw = TRUE), data = dataset)
+summary(polynom_cubic)
+
+newdata <- data.frame(x_new)
+
+y_pred_cubic <- predict(polynom_cubic, newdata = newdata)
+y_pred_cubic
+
+pred_data_cubic <- data.frame(pred_data$x, y_pred_cubic)
+
+ggplot() +
+  geom_point(data = dataset, mapping = aes(x = x, y = y)) +
+  geom_point(data = pred_data_cubic, mapping = aes(x = pred_data.x, y = y_pred)) +
+  geom_line(data = pred_data_cubic, mapping = aes(x = pred_data.x, y = y_pred, col = "Degree 3"),linewidth = 1) +
+  geom_line(data = pred_data, mapping = aes(x = x, y = y_pred, col = "Degree 2"),linetype = "dashed") +
+  theme() +
+  labs(col = "Polynomial model")
+  
